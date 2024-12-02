@@ -1,7 +1,7 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 const baseQuery = fetchBaseQuery({
-  baseUrl: process.env.DATABASE_URL,
+  baseUrl: "https://easy-mart-server-sandy.vercel.app",
   prepareHeaders: (headers, { getState }) => {
     const { userToken: token } = getState().user;
 
