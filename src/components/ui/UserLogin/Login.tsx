@@ -43,7 +43,7 @@ const Login = ({ navigation, setScreenState }: TProps) => {
         <TextInput
           placeholder="Password"
           onChangeText={setPassword}
-          secureTextEntry={false}
+          secureTextEntry={true}
           className="bg-white p-3 mb-4 rounded-lg"
         />
         <TouchableOpacity onPress={handleGoogleSignIn}>
@@ -55,14 +55,6 @@ const Login = ({ navigation, setScreenState }: TProps) => {
       <Text className="mb-3 text-center font-bold text-gray-400 text-lg">
         ---------
       </Text>
-      {/* <TouchableOpacity>
-        <View className="mx-5 mb-5 p-3 bg-red-400 rounded-lg flex-row items-center justify-center gap-1">
-          <Text>
-            <AntDesign name="google" size={16} color="white" />
-          </Text>
-          <Text className="text-white font-bold text-center">Google</Text>
-        </View>
-      </TouchableOpacity> */}
       <View className="flex-row items-center justify-center gap-2 mt-3">
         <Text>Don't have an account?</Text>
         <TouchableOpacity onPress={() => setScreenState("Sign Up")}>
