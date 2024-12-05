@@ -13,6 +13,7 @@ import CartButton from "../components/shared/CartButton";
 import { FontAwesome } from "@expo/vector-icons";
 import { useSelector } from "react-redux";
 import { useAddToCartMutation } from "../../redux/features/cart/cartApi";
+import { useGetSingleUserQuery } from "../../redux/features/user/userApi";
 
 type TProps = {
   route: any;
@@ -23,6 +24,7 @@ const SingleProductScreen = ({ route, navigation }: TProps) => {
   const { product } = route?.params;
   const [quantity, setQuantity] = useState(1);
   const { userToken, userEmail } = useSelector((state: any) => state?.user);
+  const { data: userData } = useGetSingleUserQuery(userEmail);
   const [addItemToCart, { isLoading }] = useAddToCartMutation();
 
   const handleDecrement = () => {
@@ -123,6 +125,7 @@ const SingleProductScreen = ({ route, navigation }: TProps) => {
         <Pressable
           className="flex-1 py-3 bg-orange-300 rounded-xl"
           onPress={addToCart}
+          disabled={userData?.user?.role !== "user" ? true : false}
         >
           {isLoading ? (
             <ActivityIndicator />

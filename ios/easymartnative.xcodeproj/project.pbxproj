@@ -14,8 +14,8 @@
 		96905EF65AED1B983A6B3ABC /* libPods-easymartnative.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 58EEBF8E8E6FB1BC6CAF49B5 /* libPods-easymartnative.a */; };
 		B18059E884C0ABDD17F3DC3D /* ExpoModulesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC715A2D49A985799AEE119 /* ExpoModulesProvider.swift */; };
 		BB2F792D24A3F905000567C9 /* Expo.plist in Resources */ = {isa = PBXBuildFile; fileRef = BB2F792C24A3F905000567C9 /* Expo.plist */; };
-		57666B69193844A49A62DFA7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E87BF6AC0BF24B20B3B4212D /* GoogleService-Info.plist */; };
-		9AA1C9BCE0A84045815BE198 /* noop-file.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A697C4C8F0841C4AC5752CD /* noop-file.swift */; };
+		B3E725FEB92E4368A56558D0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 99E232706E72492CA93A5E85 /* GoogleService-Info.plist */; };
+		6F315574105F445191514708 /* noop-file.swift in Sources */ = {isa = PBXBuildFile; fileRef = C42B0F79D4DF48AB99B5A242 /* noop-file.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,9 +32,9 @@
 		BB2F792C24A3F905000567C9 /* Expo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Expo.plist; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		FAC715A2D49A985799AEE119 /* ExpoModulesProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExpoModulesProvider.swift; path = "Pods/Target Support Files/Pods-easymartnative/ExpoModulesProvider.swift"; sourceTree = "<group>"; };
-		E87BF6AC0BF24B20B3B4212D /* GoogleService-Info.plist */ = {isa = PBXFileReference; name = "GoogleService-Info.plist"; path = "easymartnative/GoogleService-Info.plist"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = text.plist.xml; explicitFileType = undefined; includeInIndex = 0; };
-		8A697C4C8F0841C4AC5752CD /* noop-file.swift */ = {isa = PBXFileReference; name = "noop-file.swift"; path = "easymartnative/noop-file.swift"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.swift; explicitFileType = undefined; includeInIndex = 0; };
-		0930EE32ADD84A319D21786D /* easymartnative-Bridging-Header.h */ = {isa = PBXFileReference; name = "easymartnative-Bridging-Header.h"; path = "easymartnative/easymartnative-Bridging-Header.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
+		99E232706E72492CA93A5E85 /* GoogleService-Info.plist */ = {isa = PBXFileReference; name = "GoogleService-Info.plist"; path = "easymartnative/GoogleService-Info.plist"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = text.plist.xml; explicitFileType = undefined; includeInIndex = 0; };
+		C42B0F79D4DF48AB99B5A242 /* noop-file.swift */ = {isa = PBXFileReference; name = "noop-file.swift"; path = "easymartnative/noop-file.swift"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.swift; explicitFileType = undefined; includeInIndex = 0; };
+		172FAC27C4F2489A809DB505 /* easymartnative-Bridging-Header.h */ = {isa = PBXFileReference; name = "easymartnative-Bridging-Header.h"; path = "easymartnative/easymartnative-Bridging-Header.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,9 +59,9 @@
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				13B07FB71A68108700A75B9A /* main.m */,
 				AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */,
-				E87BF6AC0BF24B20B3B4212D /* GoogleService-Info.plist */,
-				8A697C4C8F0841C4AC5752CD /* noop-file.swift */,
-				0930EE32ADD84A319D21786D /* easymartnative-Bridging-Header.h */,
+				99E232706E72492CA93A5E85 /* GoogleService-Info.plist */,
+				C42B0F79D4DF48AB99B5A242 /* noop-file.swift */,
+				172FAC27C4F2489A809DB505 /* easymartnative-Bridging-Header.h */,
 			);
 			name = easymartnative;
 			sourceTree = "<group>";
@@ -201,8 +201,8 @@
 				BB2F792D24A3F905000567C9 /* Expo.plist in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				3E461D99554A48A4959DE609 /* SplashScreen.storyboard in Resources */,
-				57666B69193844A49A62DFA7 /* GoogleService-Info.plist in Resources */,
-				0B100DA0E74740DFB4B4B669 /* easymartnative-Bridging-Header.h in Resources */,
+				B3E725FEB92E4368A56558D0 /* GoogleService-Info.plist in Resources */,
+				A4CEAEC2EE4B4A88A66D02C9 /* easymartnative-Bridging-Header.h in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -278,7 +278,7 @@
 				13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
 				B18059E884C0ABDD17F3DC3D /* ExpoModulesProvider.swift in Sources */,
-				9AA1C9BCE0A84045815BE198 /* noop-file.swift in Sources */,
+				6F315574105F445191514708 /* noop-file.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -7,7 +7,7 @@
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/online-shopping.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -38,6 +38,11 @@
           }
         }
       ]
-    ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "5ecf3eb9-0aa8-45d1-a0d9-a170d04f48ad"
+      }
+    }
   }
 }

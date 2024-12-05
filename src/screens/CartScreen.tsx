@@ -18,9 +18,11 @@ import {
   useRemoveCartItemMutation,
 } from "../../redux/features/cart/cartApi";
 import { useCreateUserOrderMutation } from "../../redux/features/orders/ordersApi";
+import { useGetSingleUserQuery } from "../../redux/features/user/userApi";
 
 const CartScreen = () => {
   const { userEmail } = useSelector((state: any) => state?.user);
+  const { data: userData } = useGetSingleUserQuery(userEmail);
   const [prices, setPrices] = useState({
     itemPrice: 0,
     tax: 0,
@@ -28,7 +30,8 @@ const CartScreen = () => {
   });
   const [address, setAddress] = useState("");
 
-  const { data: cartData } = useGetUserCartQuery(userEmail);
+  const { data: cartData, isLoading: cartLoading } =
+    useGetUserCartQuery(userEmail);
 
   const [removeUserCartItem] = useRemoveCartItemMutation();
 
@@ -124,7 +127,14 @@ const CartScreen = () => {
     <View className="flex-1">
       {/* Display cart items */}
       <ScrollView className="flex-1 my-3">
-        {!cartData && (
+        {userData?.user?.role !== "user" && (
+          <View>
+            <Text className="text-center text-sm text-gray-600">
+              Cart not available for Admin or Super Admin
+            </Text>
+          </View>
+        )}
+        {cartLoading && (
           <View className=" flex-1 justify-center items-center">
             <ActivityIndicator />
           </View>
@@ -132,7 +142,7 @@ const CartScreen = () => {
         {(cartData?.cart === null ||
           cartData?.cart?.cartItems?.length === 0) && (
           <View className="flex-1 justify-center">
-            <Text className="text-center text-lg text-gray-700">
+            <Text className="text-center bg-orange-100 mx-5 py-2 rounded-lg text-lg text-gray-700">
               Your Cart is Empty!
             </Text>
           </View>
@@ -198,15 +208,13 @@ const CartScreen = () => {
           <Pressable
             className="py-3 bg-orange-200 rounded-xl ml-auto"
             onPress={confirmOrder}
+            disabled={userData?.user?.role !== "user" ? true : false}
           >
             <View
               className="flex-row items-center justify-center gap-1 w-[120px]"
               style={{ elevation: 1 }}
             >
-              <Text className="text-gray-600 text-lg">
-                <FontAwesome name="rocket" />
-              </Text>
-              <Text className="text-gray-600 text-base w-[80px]">
+              <Text className="text-gray-700 text-base w-[80px]">
                 {createOrderLoading || emptyCartLoading ? (
                   <ActivityIndicator />
                 ) : (

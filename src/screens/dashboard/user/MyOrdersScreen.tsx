@@ -20,6 +20,13 @@ const MyOrdersScreen = () => {
           <ActivityIndicator />
         </View>
       )}
+      {data?.orders?.length === 0 && (
+        <View className="flex-1 flex-col justify-center">
+          <Text className="text-center bg-orange-100 mx-5 py-2 rounded-lg text-lg text-gray-700">
+            No Orders Made!
+          </Text>
+        </View>
+      )}
       {data?.orders?.map((item: any) => (
         <SingleOrder key={item._id} item={item} />
       ))}

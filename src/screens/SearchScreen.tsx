@@ -31,6 +31,13 @@ const SearchScreen = ({ route, navigation }: TProps) => {
             <ActivityIndicator />
           </View>
         )}
+        {productsData?.products?.data?.length === 0 && (
+          <View className="flex-1 flex-col justify-center">
+            <Text className="text-center bg-orange-100 mx-5 py-2 rounded-lg text-lg text-gray-700">
+              No Results Found!
+            </Text>
+          </View>
+        )}
         {productsData?.products?.data &&
           productsData?.products?.data?.map((item: Product) => (
             <SingleProductBox

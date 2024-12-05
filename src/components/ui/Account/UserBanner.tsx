@@ -5,7 +5,11 @@ const UserBanner = ({ userData }: { userData: any }) => {
   return (
     <View className="bg-orange-100 py-5 px-3 flex-row gap-3 items-center">
       <Image
-        source={{ uri: userData?.user?.profilePicture }}
+        source={{
+          uri:
+            userData?.user?.profilePicture ||
+            "https://i.ibb.co.com/CQQNZt5/user-128.png",
+        }}
         className="h-[100px] w-[100px] rounded-full"
       />
       <View>

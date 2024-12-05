@@ -105,7 +105,7 @@ const RoutesComponent = () => {
   const dispatch = useDispatch();
 
   function onAuthStateChanged(user: any) {
-    if (user) {
+    if (user?.emailVerified) {
       getIdToken(user).then((idToken) => {
         dispatch(setUserInfo({ email: user?.email, token: idToken }));
       });
