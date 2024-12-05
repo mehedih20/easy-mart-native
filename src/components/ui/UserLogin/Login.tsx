@@ -43,6 +43,7 @@ const Login = ({ navigation, setScreenState }: TProps) => {
         <TextInput
           placeholder="Password"
           onChangeText={setPassword}
+          secureTextEntry={false}
           className="bg-white p-3 mb-4 rounded-lg"
         />
         <TouchableOpacity onPress={handleGoogleSignIn}>

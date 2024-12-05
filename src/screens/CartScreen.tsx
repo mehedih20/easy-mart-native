@@ -129,7 +129,7 @@ const CartScreen = () => {
             <ActivityIndicator />
           </View>
         )}
-        {(cartData.cart === null ||
+        {(cartData?.cart === null ||
           cartData?.cart?.cartItems?.length === 0) && (
           <View className="flex-1 justify-center">
             <Text className="text-center text-lg text-gray-700">

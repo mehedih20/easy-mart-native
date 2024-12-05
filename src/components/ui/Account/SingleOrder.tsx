@@ -11,21 +11,23 @@ import {
   useUpdateOrderStatusMutation,
 } from "../../../../redux/features/orders/ordersApi";
 import { Alert } from "react-native";
+import { useGetSingleUserQuery } from "../../../../redux/features/user/userApi";
+import { useSelector } from "react-redux";
 
 const SingleOrder = ({ item }: { item: any }) => {
-  const [isDeleting, setIsDeleting] = useState(false);
-  const [updateOrderStatus] = useUpdateOrderStatusMutation();
-  const [deleteUserOrder] = useDeleteOrderMutation();
+  const { userEmail } = useSelector((state: any) => state?.user);
+  const [updateOrderStatus, { isLoading: updateLoading }] =
+    useUpdateOrderStatusMutation();
+  const [deleteUserOrder, { isLoading: deleteLoading }] =
+    useDeleteOrderMutation();
+  const { data: userData } = useGetSingleUserQuery(userEmail);
 
   const approveOrder = async (orderId: string) => {
     await updateOrderStatus(orderId);
   };
 
   const deleteOrder = async (orderId: string) => {
-    setIsDeleting(true);
     await deleteUserOrder(orderId);
-
-    setIsDeleting(false);
   };
 
   const confirmDelete = (orderId: string) => {
@@ -69,17 +71,33 @@ const SingleOrder = ({ item }: { item: any }) => {
             </Text>
           </Text>
           {item.status === "pending" && (
-            <TouchableOpacity onPress={() => confirmDelete(item._id)}>
-              <View className="px-3 py-1 bg-red-400 mt-2 w-[120px] rounded-lg">
-                {isDeleting ? (
-                  <ActivityIndicator />
-                ) : (
-                  <Text className="text-center text-white font-medium">
-                    Cancel Order
-                  </Text>
-                )}
-              </View>
-            </TouchableOpacity>
+            <>
+              {userData?.user?.role === "user" ? (
+                <TouchableOpacity onPress={() => confirmDelete(item._id)}>
+                  <View className="px-3 py-1 bg-red-400 mt-2 w-[120px] rounded-lg">
+                    {deleteLoading ? (
+                      <ActivityIndicator />
+                    ) : (
+                      <Text className="text-center text-white font-medium">
+                        Cancel Order
+                      </Text>
+                    )}
+                  </View>
+                </TouchableOpacity>
+              ) : (
+                <TouchableOpacity onPress={() => approveOrder(item._id)}>
+                  <View className="px-3 py-1 bg-green-600 mt-2 w-[120px] rounded-lg">
+                    {updateLoading ? (
+                      <ActivityIndicator />
+                    ) : (
+                      <Text className="text-center text-white font-medium">
+                        Approve Order
+                      </Text>
+                    )}
+                  </View>
+                </TouchableOpacity>
+              )}
+            </>
           )}
         </View>
       </View>
