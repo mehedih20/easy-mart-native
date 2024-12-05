@@ -8,7 +8,7 @@ import RoutesComponent from "./src/routes/routes";
 export default function App() {
   return (
     <Provider store={store}>
-      <StatusBar style="auto" />
+      <StatusBar style="dark" />
       <RoutesComponent />
     </Provider>
   );

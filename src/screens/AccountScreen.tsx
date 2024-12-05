@@ -2,9 +2,12 @@ import { useEffect } from "react";
 import { Text, TouchableOpacity, View } from "react-native";
 import { useSelector } from "react-redux";
 import SignOutButton from "../components/shared/SignOutButton";
+import { useGetSingleUserQuery } from "../../redux/features/user/userApi";
+import UserAccount from "../components/ui/Account/UserAccount";
 
 const AccountScreen = ({ navigation }: { navigation: any }) => {
-  const { userToken } = useSelector((state: any) => state?.user);
+  const { userToken, userEmail } = useSelector((state: any) => state?.user);
+  const { data: userData } = useGetSingleUserQuery(userEmail);
 
   const handleSignInPress = () => {
     navigation.navigate("LoginScreen");
@@ -33,9 +36,9 @@ const AccountScreen = ({ navigation }: { navigation: any }) => {
           </TouchableOpacity>
         </View>
       ) : (
-        <View>
-          <Text>User</Text>
-        </View>
+        <>
+          <UserAccount navigation={navigation} />
+        </>
       )}
     </>
   );

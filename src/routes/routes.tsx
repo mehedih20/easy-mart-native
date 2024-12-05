@@ -19,6 +19,14 @@ import { useDispatch } from "react-redux";
 import { getIdToken } from "@react-native-firebase/auth";
 import { setUserInfo } from "../../redux/features/user/userSlice";
 import auth from "@react-native-firebase/auth";
+import MyOrdersScreen from "../screens/dashboard/user/MyOrdersScreen";
+import PaymentScreen from "../screens/dashboard/user/PaymentScreen";
+import AddProductScreen from "../screens/dashboard/admin/AddProductScreen";
+import ManageProductsScreen from "../screens/dashboard/admin/ManageProductsScreen";
+import ManageOrdersScreen from "../screens/dashboard/admin/ManageOrdersScreen";
+import ManageCategoriesScreen from "../screens/dashboard/admin/ManageCategoriesScreen";
+import ManageAdminScreen from "../screens/dashboard/admin/ManageAdminScreen";
+import CartScreen from "../screens/CartScreen";
 
 const Stack = createStackNavigator();
 const BottomTabs = createBottomTabNavigator();
@@ -68,7 +76,7 @@ const EasyMartOverview = () => {
       />
       <BottomTabs.Screen
         name="CartScreen"
-        component={AboutScreen}
+        component={CartScreen}
         options={{
           title: "Cart",
           tabBarLabel: "Cart",
@@ -99,7 +107,7 @@ const RoutesComponent = () => {
   function onAuthStateChanged(user: any) {
     if (user) {
       getIdToken(user).then((idToken) => {
-        dispatch(setUserInfo({ email: user?.displayName, token: idToken }));
+        dispatch(setUserInfo({ email: user?.email, token: idToken }));
       });
     } else {
       dispatch(setUserInfo({ email: "", token: "" }));
@@ -144,6 +152,16 @@ const RoutesComponent = () => {
           }}
         />
         <Stack.Screen name="LoginScreen" component={LoginScreen} />
+        <Stack.Screen name="My Orders" component={MyOrdersScreen} />
+        <Stack.Screen name="Payment" component={PaymentScreen} />
+        <Stack.Screen name="Add Product" component={AddProductScreen} />
+        <Stack.Screen name="Manage Products" component={ManageProductsScreen} />
+        <Stack.Screen name="Manage Orders" component={ManageOrdersScreen} />
+        <Stack.Screen
+          name="Manage Categories"
+          component={ManageCategoriesScreen}
+        />
+        <Stack.Screen name="Manage Admin" component={ManageAdminScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

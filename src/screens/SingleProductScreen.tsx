@@ -1,8 +1,18 @@
 import { useEffect, useState } from "react";
-import { Image, Pressable, StyleSheet, Text, View } from "react-native";
+import {
+  ActivityIndicator,
+  Alert,
+  Image,
+  Pressable,
+  StyleSheet,
+  Text,
+  View,
+} from "react-native";
 import { RatingStars } from "../components/shared/RatingStars";
 import CartButton from "../components/shared/CartButton";
 import { FontAwesome } from "@expo/vector-icons";
+import { useSelector } from "react-redux";
+import { useAddToCartMutation } from "../../redux/features/cart/cartApi";
 
 type TProps = {
   route: any;
@@ -12,6 +22,8 @@ type TProps = {
 const SingleProductScreen = ({ route, navigation }: TProps) => {
   const { product } = route?.params;
   const [quantity, setQuantity] = useState(1);
+  const { userToken, userEmail } = useSelector((state: any) => state?.user);
+  const [addItemToCart, { isLoading }] = useAddToCartMutation();
 
   const handleDecrement = () => {
     if (quantity > 1) {
@@ -21,6 +33,32 @@ const SingleProductScreen = ({ route, navigation }: TProps) => {
 
   const handleIncrement = () => {
     setQuantity(quantity + 1);
+  };
+
+  const addToCart = async () => {
+    if (!userToken) {
+      Alert.alert("You must login in first!");
+      return;
+    }
+    if (quantity < 1) {
+      Alert.alert("Quantity cannot be zero!");
+      return;
+    }
+    const newCartItem = {
+      email: userEmail,
+      data: {
+        productId: product._id,
+        productQuantity: Number(quantity),
+      },
+    };
+
+    const result = await addItemToCart(newCartItem);
+
+    if (result?.data?.success) {
+      Alert.alert("Added to cart successfully");
+    } else {
+      Alert.alert("Something went wrong");
+    }
   };
 
   useEffect(() => {
@@ -82,13 +120,20 @@ const SingleProductScreen = ({ route, navigation }: TProps) => {
         <Text className="text-xl font-bold text-gray-700 flex-1">
           ${Number(product?.price) * quantity}
         </Text>
-        <Pressable className="flex-1 py-3 bg-orange-300 rounded-xl">
-          <View className="flex-row items-center justify-center gap-1">
-            <Text className="text-gray-600 text-lg -mt-0.5">
-              <FontAwesome name="shopping-bag" />
-            </Text>
-            <Text className="text-gray-600 text-base w-24">Add to Cart</Text>
-          </View>
+        <Pressable
+          className="flex-1 py-3 bg-orange-300 rounded-xl"
+          onPress={addToCart}
+        >
+          {isLoading ? (
+            <ActivityIndicator />
+          ) : (
+            <View className="flex-row items-center justify-center gap-1">
+              <Text className="text-gray-600 text-lg -mt-0.5">
+                <FontAwesome name="shopping-bag" />
+              </Text>
+              <Text className="text-gray-600 text-base w-24">Add to Cart</Text>
+            </View>
+          )}
         </Pressable>
       </View>
     </View>
