@@ -5,7 +5,7 @@ import {
   TouchableOpacity,
   ActivityIndicator,
 } from "react-native";
-import React, { useState } from "react";
+import React from "react";
 import {
   useDeleteOrderMutation,
   useUpdateOrderStatusMutation,
@@ -59,15 +59,15 @@ const SingleOrder = ({ item }: { item: any }) => {
         <View>
           <Text className="font-semibold mb-1">{item.productName}</Text>
           <Text>Quantity: {item.productQuantity}</Text>
-          <Text>{item.orderAddress}</Text>
-          <Text>
+          <Text className="flex-1">{item.orderAddress}</Text>
+          <Text className="flex-1 w-[200px]">
             Status:{" "}
             <Text
               className={`${
                 item.status === "pending" ? "text-red-500" : "text-green-500"
-              }`}
+              } w-[200px]`}
             >
-              {item.status}
+              {item?.status}
             </Text>
           </Text>
           {item.status === "pending" && (

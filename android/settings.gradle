@@ -44,7 +44,7 @@ if (getRNMinorVersion() >= 75) {
   }
 }
 
-rootProject.name = 'easy-mart-native'
+rootProject.name = 'Easy Mart'
 
 dependencyResolutionManagement {
   versionCatalogs {

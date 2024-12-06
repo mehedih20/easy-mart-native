@@ -39,7 +39,7 @@ const SingleProductBox = ({
           <Text className="text-white text-sm font-bold">{item?.deal}</Text>
         </View>
         <View className="px-2 items-start flex-1">
-          <Text className="text-sm text-white bg-teal-500 w-fit rounded-full px-2 mb-1">
+          <Text className="text-sm text-white bg-teal-500 text-end rounded-full px-2 mb-1 py-0.5">
             {item?.category}
           </Text>
           <Text className="text-lg font-semibold text-gray-700 mb-2">

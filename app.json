@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "easy-mart-native",
-    "slug": "easy-mart-native",
+    "name": "EasyMart",
+    "slug": "EasyMart",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -41,7 +41,7 @@
     ],
     "extra": {
       "eas": {
-        "projectId": "5ecf3eb9-0aa8-45d1-a0d9-a170d04f48ad"
+        "projectId": "64ae9a23-b877-4ff0-a18d-d4dfe5e58c79"
       }
     }
   }

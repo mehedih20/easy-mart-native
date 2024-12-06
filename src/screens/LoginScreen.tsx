@@ -19,13 +19,13 @@ const LoginScreen = ({ navigation }: { navigation: any }) => {
   }, [screenState]);
 
   return (
-    <ScrollView>
+    <View className="flex-1">
       {screenState === "Login" ? (
         <Login navigation={navigation} setScreenState={setScreenState} />
       ) : (
         <SignUp setScreenState={setScreenState} />
       )}
-    </ScrollView>
+    </View>
   );
 };
 

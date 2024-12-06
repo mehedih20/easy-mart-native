@@ -127,7 +127,7 @@ const CartScreen = () => {
     <View className="flex-1">
       {/* Display cart items */}
       <ScrollView className="flex-1 my-3">
-        {userData?.user?.role !== "user" && (
+        {userEmail !== "" && userData?.user?.role !== "user" && (
           <View>
             <Text className="text-center text-sm text-gray-600">
               Cart not available for Admin or Super Admin

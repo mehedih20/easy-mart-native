@@ -83,7 +83,7 @@ const SingleProductScreen = ({ route, navigation }: TProps) => {
         <Text className="text-2xl font-bold text-gray-700">
           {product?.name}
         </Text>
-        <Text className="bg-teal-500 text-white text-sm px-3 rounded-full py-0.5 mt-2 mb-3">
+        <Text className="bg-teal-500 w-[135px] text-white text-sm px-3 rounded-full py-0.5 mt-2 mb-3">
           {product?.category}
         </Text>
         <RatingStars rating={product?.rating} />
@@ -125,7 +125,11 @@ const SingleProductScreen = ({ route, navigation }: TProps) => {
         <Pressable
           className="flex-1 py-3 bg-orange-300 rounded-xl"
           onPress={addToCart}
-          disabled={userData?.user?.role !== "user" ? true : false}
+          disabled={
+            userData?.user?.role === "admin" || userData?.user?.role === "owner"
+              ? true
+              : false
+          }
         >
           {isLoading ? (
             <ActivityIndicator />

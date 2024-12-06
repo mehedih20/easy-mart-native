@@ -7,7 +7,7 @@
     <key>CFBundleDevelopmentRegion</key>
     <string>$(DEVELOPMENT_LANGUAGE)</string>
     <key>CFBundleDisplayName</key>
-    <string>easy-mart-native</string>
+    <string>Easy Mart</string>
     <key>CFBundleExecutable</key>
     <string>$(EXECUTABLE_NAME)</string>
     <key>CFBundleIdentifier</key>
@@ -39,7 +39,7 @@
       <dict>
         <key>CFBundleURLSchemes</key>
         <array>
-          <string>exp+easy-mart-native</string>
+          <string>exp+easymart</string>
         </array>
       </dict>
     </array>

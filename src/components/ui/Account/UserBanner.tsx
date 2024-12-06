@@ -1,9 +1,15 @@
-import { View, Text, Image } from "react-native";
-import React from "react";
+import { View, Text, Image, Modal } from "react-native";
+import React, { useState } from "react";
+import { TouchableOpacity } from "react-native";
+import { FontAwesome } from "@expo/vector-icons";
+import CommonModal from "../../shared/CommonModal";
+import EditUserInfo from "./EditUserInfo";
 
 const UserBanner = ({ userData }: { userData: any }) => {
+  const [modalVisible, setModalVisible] = useState(false);
+
   return (
-    <View className="bg-orange-100 py-5 px-3 flex-row gap-3 items-center">
+    <View className="bg-orange-100 py-5 px-3 flex-row gap-3 items-center relative">
       <Image
         source={{
           uri:
@@ -22,6 +28,23 @@ const UserBanner = ({ userData }: { userData: any }) => {
         </Text>
         <Text className="text-gray-600 text-sm">({userData?.user?.role})</Text>
       </View>
+      <TouchableOpacity
+        className="absolute top-3 right-3"
+        style={{ elevation: 2 }}
+        onPress={() => setModalVisible(true)}
+      >
+        <View className="bg-orange-300 p-2 rounded-full">
+          <Text>
+            <FontAwesome name="pencil" size={14} color="white" />
+          </Text>
+        </View>
+      </TouchableOpacity>
+      <CommonModal
+        setModalVisible={setModalVisible}
+        modalVisible={modalVisible}
+      >
+        <EditUserInfo />
+      </CommonModal>
     </View>
   );
 };
